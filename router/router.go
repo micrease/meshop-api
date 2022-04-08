@@ -4,9 +4,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/mattn/go-colorable"
 	"github.com/micrease/micrease-core/context"
+	"github.com/micrease/micrease-core/gin/middleware"
 	"github.com/micrease/micrease-core/trace"
 	"meshop-api/handler"
-	"meshop-api/middleware"
 )
 
 func InitGinRouter() *gin.Engine {
@@ -14,16 +14,16 @@ func InitGinRouter() *gin.Engine {
 	gin.DefaultWriter = colorable.NewColorableStdout()
 	ginRouter := gin.Default()
 	//全局错误处理
-	ginRouter.Use(middleware.Recover, middleware.RequestId(trace.TrafficKey))
+	ginRouter.Use(middleware.Recover(true), middleware.RequestId(trace.TrafficKey))
 	//每个controller一个分组,结构比较清晰
 	prodGroup := ginRouter.Group("/demo/v1/product")
 	{
-		ctrl := handler.NewProduct()
-		prodGroup.Handle("GET", "/list", Handle(ctrl.List))
-		prodGroup.Handle("GET", "/detail", Handle(ctrl.Detail))
-		prodGroup.Handle("POST", "/create", Handle(ctrl.Create))
-		prodGroup.Handle("POST", "/update", Handle(ctrl.Update))
-		prodGroup.Handle("GET", "/delete", Handle(ctrl.Delete))
+		h := handler.NewProduct()
+		prodGroup.Handle("GET", "/list", Handle(h.List))
+		prodGroup.Handle("GET", "/detail", Handle(h.Detail))
+		prodGroup.Handle("POST", "/create", Handle(h.Create))
+		prodGroup.Handle("POST", "/update", Handle(h.Update))
+		prodGroup.Handle("GET", "/delete", Handle(h.Delete))
 	}
 	return ginRouter
 }

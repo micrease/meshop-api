@@ -26,5 +26,5 @@ func RegisterRpcClient() {
 		micro.WrapClient(wappers.NewClientWrapper),
 	)
 	//"product-service" 对应服务注册名和注册中心product-service服务名称保持一致micro.rpc-service.product
-	Product = pb.NewProductService("meshop-product-service", apiClient.Client())
+	Product = pb.NewProductService(sysConfig.ServiceRpcProduct, apiClient.Client())
 }
