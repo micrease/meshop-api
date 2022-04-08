@@ -9,9 +9,9 @@ import (
 	"github.com/micrease/micrease-core/structs"
 	"github.com/micrease/micrease-core/validate"
 	log "github.com/micro/go-micro/v2/logger"
+	"github.com/spf13/cast"
 	"meshop-api/common/rpcclient"
 	"meshop-api/entity"
-	"strconv"
 )
 
 type Product struct {
@@ -30,10 +30,9 @@ func NewProduct() *Product {
 func (this *Product) List(ctx *mctx.Context) {
 	//GET方式获取query string
 	sizeStr := ctx.GinCtx.DefaultQuery("size", "10")
-	size, _ := strconv.Atoi(sizeStr)
 	//大写的原因,需要把小写的转义一下
 	var prodReq pb.ProductRequest
-	prodReq.Size = int32(size)
+	prodReq.Size = cast.ToInt32(sizeStr)
 	//此处无须处理err,err已经在client_warpper中拦截了
 	prodResp, _ := rpcclient.Product.GetProductList(context.Background(), &prodReq)
 	this.ResponseData(ctx, prodResp.Data)
@@ -44,10 +43,9 @@ func (this *Product) List(ctx *mctx.Context) {
  */
 func (this *Product) Detail(ctx *mctx.Context) {
 	sizeStr := ctx.GinCtx.DefaultQuery("id", "0")
-	size, _ := strconv.Atoi(sizeStr)
 	//大写的原因,需要把小写的转义一下
 	var prodReq pb.Product
-	prodReq.ProdId = int32(size)
+	prodReq.ProdId = cast.ToInt32(sizeStr)
 	//此处无须处理err,err已经在client_warpper中拦截了
 	prodResp, _ := rpcclient.Product.GetProductDetail(context.Background(), &prodReq)
 	log.Info("prodService.GetProductDetail:", prodResp)
@@ -97,8 +95,7 @@ func (this *Product) Update(ctx *mctx.Context) {
 func (this *Product) Delete(ctx *mctx.Context) {
 	var prodReq pb.Product
 	idStr := ctx.GinCtx.DefaultQuery("id", "0")
-	id, _ := strconv.Atoi(idStr)
-	prodReq.ProdId = int32(id)
+	prodReq.ProdId = cast.ToInt32(idStr)
 	//如果prodId小于等于0，则报错
 	errs.PanicIf(prodReq.ProdId <= 0, errs.StatusParamError, "参数不正确")
 	//此处无须处理err,err已经在client_warpper中拦截了
