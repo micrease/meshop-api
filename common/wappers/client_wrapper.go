@@ -2,8 +2,8 @@ package wappers
 
 import (
 	"context"
-	"github.com/micrease/micrease-core/errs"
 	"github.com/micro/go-micro/v2/client"
+	micro_errors "github.com/micro/go-micro/v2/errors"
 	log "github.com/micro/go-micro/v2/logger"
 )
 
@@ -22,6 +22,8 @@ func NewClientWrapper(c client.Client) client.Client {
 func (w *ClientWrapper) Call(ctx context.Context, req client.Request, rsp interface{}, opts ...client.CallOption) error {
 	log.Info("ClientWraper.Call,req:", req.Body())
 	err := w.Client.Call(ctx, req, rsp)
-	errs.PanicIfRpcError(err)
+	if err != nil {
+		panic(micro_errors.Parse(err.Error()))
+	}
 	return err
 }

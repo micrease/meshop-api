@@ -7,7 +7,7 @@ require (
 	github.com/google/uuid v1.1.1
 	github.com/mattn/go-colorable v0.1.7
 	github.com/micrease/meshop-protos v1.0.0
-	github.com/micrease/micrease-core v1.0.5
+	github.com/micrease/micrease-core v1.0.9
 	github.com/micro/go-micro/v2 v2.9.1
 	google.golang.org/grpc v1.27.0 // indirect
 )
