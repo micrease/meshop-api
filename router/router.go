@@ -6,7 +6,7 @@ import (
 	"github.com/micrease/micrease-core/context"
 	"github.com/micrease/micrease-core/gin/middleware"
 	"github.com/micrease/micrease-core/trace"
-	"meshop-api/handler"
+	"meshop-api/app/handler"
 )
 
 func InitGinRouter() *gin.Engine {

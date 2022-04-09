@@ -1,4 +1,4 @@
-package entity
+package model
 
 type Product struct {
 	//ID新增时可不传或为0，更新时必传

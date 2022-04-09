@@ -10,8 +10,8 @@ import (
 	"github.com/micrease/micrease-core/validate"
 	log "github.com/micro/go-micro/v2/logger"
 	"github.com/spf13/cast"
+	"meshop-api/app/model"
 	"meshop-api/common/rpcclient"
-	"meshop-api/entity"
 )
 
 type Product struct {
@@ -57,7 +57,7 @@ func (this *Product) Detail(ctx *mctx.Context) {
  */
 func (this *Product) Create(ctx *mctx.Context) {
 	//声明一个接收参数的实体
-	var prodEntity entity.Product
+	var prodEntity model.Product
 	//绑定参数，并验证合法性
 	validate.BindWithPanic(ctx, &prodEntity)
 	//基它的判断，如果不成立，则抛出指定信息
@@ -74,7 +74,7 @@ func (this *Product) Create(ctx *mctx.Context) {
  */
 func (this *Product) Update(ctx *mctx.Context) {
 	//声明一个接收参数的实体
-	var prodEntity entity.Product
+	var prodEntity model.Product
 	//绑定参数，并验证合法性
 	validate.BindWithPanic(ctx, &prodEntity)
 	//更新时必须要传
