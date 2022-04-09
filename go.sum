@@ -321,8 +321,8 @@ github.com/matttproud/golang_protobuf_extensions v1.0.1 h1:4hp9jkHxhMHkqkrB3Ix0j
 github.com/matttproud/golang_protobuf_extensions v1.0.1/go.mod h1:D8He9yQNgCq6Z5Ld7szi9bcBfOoFv/3dc6xSMkL2PC0=
 github.com/micrease/meshop-protos v1.0.0 h1:Piri8gqGtiO9GJ9KCqe0NtBdMo5Up2NUI4T77IPd9Gc=
 github.com/micrease/meshop-protos v1.0.0/go.mod h1:WulxIbjh4Uit3kYKheKY7tBlm+/J4cOrpW7mPksONGw=
-github.com/micrease/micrease-core v1.0.11 h1:3/OQrLK3i3gICf16YRfHIlGAtbS+WmH6LoabfzeOFf8=
-github.com/micrease/micrease-core v1.0.11/go.mod h1:1vWVbWchb/qahtd892PqqNPd2/kRv5Y1aktjCNwxUDg=
+github.com/micrease/micrease-core v1.0.12 h1:AwTT1I8Khxpa8ZZTK2j5YMCPqb7gp4LaZKePaFGkTe0=
+github.com/micrease/micrease-core v1.0.12/go.mod h1:1vWVbWchb/qahtd892PqqNPd2/kRv5Y1aktjCNwxUDg=
 github.com/micro/cli/v2 v2.1.2 h1:43J1lChg/rZCC1rvdqZNFSQDrGT7qfMrtp6/ztpIkEM=
 github.com/micro/cli/v2 v2.1.2/go.mod h1:EguNh6DAoWKm9nmk+k/Rg0H3lQnDxqzu5x5srOtGtYg=
 github.com/micro/go-micro/v2 v2.9.1 h1:+S9koIrNWARjpP6k2TZ7kt0uC9zUJtNXzIdZTZRms7Q=
