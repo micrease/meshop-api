@@ -2,11 +2,11 @@ package main
 
 import (
 	"flag"
+	log "github.com/asim/go-micro/v3/logger"
+	"github.com/asim/go-micro/v3/registry"
+	"github.com/asim/go-micro/v3/web"
 	nacos "github.com/micrease/micrease-core/registry"
-	log "github.com/micro/go-micro/v2/logger"
-	"github.com/micro/go-micro/v2/registry"
-	"github.com/micro/go-micro/v2/web"
-	"meshop-api/common/rpcclient"
+	"meshop-api/app/service/remote_service"
 	sysConfig "meshop-api/config"
 	"meshop-api/router"
 )
@@ -39,7 +39,7 @@ func main() {
 		log.Fatal(err)
 	}
 	//创建RPC调用client
-	rpcclient.RegisterRpcClient()
+	remote_service.Register()
 	// Run service
 	if err := httpServer.Run(); err != nil {
 		log.Fatal(err)

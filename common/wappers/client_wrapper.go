@@ -2,9 +2,9 @@ package wappers
 
 import (
 	"context"
-	"github.com/micro/go-micro/v2/client"
-	micro_errors "github.com/micro/go-micro/v2/errors"
-	log "github.com/micro/go-micro/v2/logger"
+	"github.com/asim/go-micro/v3/client"
+	micro_errors "github.com/asim/go-micro/v3/errors"
+	log "github.com/asim/go-micro/v3/logger"
 )
 
 //定义一个wrapper,继承Client,重写Call方法
