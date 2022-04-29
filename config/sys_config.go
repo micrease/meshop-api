@@ -16,8 +16,8 @@ var sysConfig *SysConfig
 
 func InitSysConfig() *SysConfig {
 	once.Do(func() {
-		sysConfig = new(SysConfig)
-		err := config.LoadConfigTo(sysConfig)
+		var err error
+		sysConfig, err = config.LoadConfig[SysConfig]()
 		if err != nil {
 			os.Exit(1)
 		}
